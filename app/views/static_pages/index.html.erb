@@ -1,0 +1,13 @@
+<h2>Display any Flickr user's photos</h2>
+
+<%= form_with method: :get do |form| %>
+  <%= form.label :flickr_id, 'Flickr ID' %>
+  <%= form.text_field :flickr_id %>
+  <%= form.submit 'Submit' %>
+<% end %>
+<br>
+<% if params[:flickr_id] %>
+  <% @photo_list.each do |photo| %>
+    <%= image_tag("https://live.staticflickr.com/#{photo.server}/#{photo.id}_#{photo.secret}_m.jpg") %>
+    <% end %>
+<% end %>
